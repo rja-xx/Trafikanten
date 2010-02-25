@@ -5,7 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import junit.framework.Assert;
+import no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException;
 import no.knowit.trafikantenkiller.model.nodes.Station;
+import no.knowit.trafikantenkiller.route.Route;
+import no.knowit.trafikantenkiller.route.RouteElement;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -20,6 +23,15 @@ public class TrafikantenKillerTest
 	
 	private static TrafikantenKiller app = TrafikantenKiller.getInstance();
 
+	@Test
+	public void testOppsettAvDatabase(){
+		try{
+			app.initDatabase();
+		}catch(AlreadyInitiatedException e){
+			logger.info("Databasen er allerede initialisert!");
+		}
+	}
+	
 	@Test
 	public void testHentingAvHopOptimertRute(){
 		Station majorstuen = null;
@@ -40,9 +52,9 @@ public class TrafikantenKillerTest
 		Iterator<RouteElement> iterator = route.iterator();
 		Assert.assertNotNull(iterator);
 		
-		Assert.assertEquals("Jernbanetorget", iterator.next().getName());
-		Assert.assertEquals("Nasjonalteateret", iterator.next().getName());
-		Assert.assertEquals("Majorstuen", iterator.next().getName());
+		Assert.assertEquals("Jernbanetorget", iterator.next().getDestination());
+		Assert.assertEquals("Nasjonalteateret", iterator.next().getDestination());
+		Assert.assertEquals("Majorstuen", iterator.next().getDestination());
 	}
 	
 	@Test

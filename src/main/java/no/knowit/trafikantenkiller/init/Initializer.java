@@ -1,8 +1,8 @@
 package no.knowit.trafikantenkiller.init;
 
+import no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException;
 import no.knowit.trafikantenkiller.model.nodes.Station;
 import no.knowit.trafikantenkiller.model.relationships.Traveltype;
-import no.knowit.trafikantenkiller.propertyutils.ApplickationProperties;
 
 import org.apache.log4j.Logger;
 import org.neo4j.graphdb.Node;
@@ -12,29 +12,19 @@ import org.neo4j.kernel.EmbeddedGraphDatabase;
 
 public class Initializer {
 
-	/**
-	 * This program initializes the graph-database for the "trafikanten-killer" nosql workshop.
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args){
-		ApplickationProperties properties = ApplickationProperties.getInstance();
-		String databaseLocation = properties.getDatabaseLocation();
-		EmbeddedGraphDatabase database = new EmbeddedGraphDatabase(databaseLocation);
+	private static Logger logger = Logger.getLogger(Initializer.class);
+	private final EmbeddedGraphDatabase database;;
 
-		initDatabase(database);
-
-		database.shutdown();
-		System.exit(0);
+	public Initializer(EmbeddedGraphDatabase database) {
+		this.database = database;
 	}
 
-
-	private static void initDatabase(EmbeddedGraphDatabase database) {
+	public void initDatabase() throws AlreadyInitiatedException{
 		Transaction transaction = database.beginTx();
 		try{
 			for(Node node : database.getAllNodes()){
 				if(node.getProperty("name", "n/a").equals("Utgangsnode")){
-					throw new RuntimeException("Databasen er allerede satt opp!");
+					throw new AlreadyInitiatedException("Databasen er allerede satt opp!");
 				}
 			}
 			Node baseNode = database.createNode();
@@ -74,10 +64,13 @@ public class Initializer {
 			makeConnection(bislett, tullinlokka, 8, Traveltype.TRAM);
 
 			transaction.success();
-			System.out.println("Du er nå klar for workshopen!");
-		}
-		catch(Exception e){
-			Logger.getLogger(Initializer.class).fatal("Kunne ikke skape demonstrasjonsdatabase.", e);
+			String message = "Du er nå klar for workshopen!";
+			System.out.println(message);
+			logger.info(message);
+		}catch(AlreadyInitiatedException e){
+			throw e;
+		}catch(Exception e){
+			logger.fatal("Kunne ikke skape demonstrasjonsdatabase.", e);
 			transaction.failure();
 		}finally{
 			transaction.finish();

@@ -5,9 +5,14 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException;
+import no.knowit.trafikantenkiller.init.Initializer;
 import no.knowit.trafikantenkiller.init.Table;
 import no.knowit.trafikantenkiller.model.nodes.Station;
 import no.knowit.trafikantenkiller.propertyutils.ApplickationProperties;
+import no.knowit.trafikantenkiller.route.Route;
+import no.knowit.trafikantenkiller.route.Routeplanner;
+import no.knowit.trafikantenkiller.route.RouteplannerFactory;
 
 import org.apache.log4j.Logger;
 import org.neo4j.graphdb.Direction;
@@ -76,6 +81,11 @@ public class TrafikantenKiller {
 			tx.finish();
 		}
 		return res;
+	}
+
+	public void initDatabase() throws AlreadyInitiatedException {
+		Initializer initializer = new Initializer(database);
+		initializer.initDatabase();
 	}
 
 

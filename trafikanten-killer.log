@@ -1,0 +1,15 @@
+02-25@14:50:18 FATAL (Initializer.java:72)     - Kunne ikke skape demonstrasjonsdatabase.
+no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException: Databasen er allerede satt opp!
+	at no.knowit.trafikantenkiller.init.Initializer.initDatabase(Initializer.java:27)
+	at no.knowit.trafikantenkiller.TrafikantenKiller.initDatabase(TrafikantenKiller.java:88)
+	at no.knowit.trafikantenkiller.TrafikantenKillerShell.main(TrafikantenKillerShell.java:40)
+02-25@14:51:48 FATAL (Initializer.java:72)     - Kunne ikke skape demonstrasjonsdatabase.
+no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException: Databasen er allerede satt opp!
+	at no.knowit.trafikantenkiller.init.Initializer.initDatabase(Initializer.java:27)
+	at no.knowit.trafikantenkiller.TrafikantenKiller.initDatabase(TrafikantenKiller.java:88)
+	at no.knowit.trafikantenkiller.TrafikantenKillerShell.main(TrafikantenKillerShell.java:40)
+02-25@14:51:50 FATAL (Initializer.java:72)     - Kunne ikke skape demonstrasjonsdatabase.
+no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException: Databasen er allerede satt opp!
+	at no.knowit.trafikantenkiller.init.Initializer.initDatabase(Initializer.java:27)
+	at no.knowit.trafikantenkiller.TrafikantenKiller.initDatabase(TrafikantenKiller.java:88)
+	at no.knowit.trafikantenkiller.TrafikantenKillerShell.main(TrafikantenKillerShell.java:40)
