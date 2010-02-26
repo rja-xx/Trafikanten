@@ -28,6 +28,27 @@ public class Station {
 	public String toString(){
 		return this.getName();
 	}
-	
+
+	@Override
+	public int hashCode() {
+		return (int) underlyingNode.getId();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Station other = (Station) obj;
+		if (underlyingNode == null) {
+			if (other.underlyingNode != null)
+				return false;
+		} else if (underlyingNode.getId() != other.getUnderlyingNode().getId())
+			return false;
+		return true;
+	}
 	
 }

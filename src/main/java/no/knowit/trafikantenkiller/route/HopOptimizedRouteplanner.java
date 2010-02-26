@@ -53,7 +53,8 @@ public class HopOptimizedRouteplanner implements Routeplanner {
 				TraversalPosition currentPosition = traverser.currentPosition();
 				boolean isStartNode = currentPosition.isStartNode();
 				if(isStartNode){
-					routeBuilder = new Route.Builder();
+					routeBuilder = new Route.Builder(from.getName());
+					continue;
 				}
 				String name = (String) node.getProperty("name");
 

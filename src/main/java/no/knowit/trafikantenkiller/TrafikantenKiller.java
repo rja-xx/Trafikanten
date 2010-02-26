@@ -88,5 +88,28 @@ public class TrafikantenKiller {
 		initializer.initDatabase();
 	}
 
+	public List<Station> searchForStation(String searchTerm) {
+		List<Station> res = new LinkedList<Station>();
+		Transaction tx = database.beginTx();
+		try{
+			Node baseNode = database.getNodeById(BASE_NODE);
+			Traverser traverse = baseNode.traverse(Order.BREADTH_FIRST, StopEvaluator.DEPTH_ONE, ReturnableEvaluator.ALL_BUT_START_NODE, Table.STATIONS, Direction.OUTGOING);
+			for (Node node : traverse) {
+				Station station = new Station(node);
+				if(station.getName().toLowerCase().matches(searchTerm.toLowerCase())){
+					res.add(station);
+				}
+			}
+			Collections.sort(res, stringComparator);
+			tx.success();
+		}catch (Exception e) {
+			logger.error("Klarer ikke å finne matchende stasjoner", e);
+			tx.failure();
+		}finally{
+			tx.finish();
+		}
+		return res;
+	}
+
 
 }

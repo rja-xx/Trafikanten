@@ -58,4 +58,12 @@ public class Route implements Iterable<RouteElement>
 		return this.routeElements.get(index).getDestination();
 	}
 
+	public int getTotalDuration() {
+		int res = 0;
+		for (RouteElement r : routeElements) {
+			res += r.getDuration();
+		}
+		return res;
+	}
+
 }

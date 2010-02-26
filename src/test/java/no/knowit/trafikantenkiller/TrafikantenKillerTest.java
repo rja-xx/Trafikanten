@@ -7,6 +7,7 @@ import java.util.List;
 import junit.framework.Assert;
 import no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException;
 import no.knowit.trafikantenkiller.model.nodes.Station;
+import no.knowit.trafikantenkiller.model.relationships.Traveltype;
 import no.knowit.trafikantenkiller.route.Route;
 import no.knowit.trafikantenkiller.route.RouteElement;
 
@@ -52,9 +53,10 @@ public class TrafikantenKillerTest
 		Iterator<RouteElement> iterator = route.iterator();
 		Assert.assertNotNull(iterator);
 		
-		Assert.assertEquals("Jernbanetorget", iterator.next().getDestination());
-		Assert.assertEquals("Nasjonalteateret", iterator.next().getDestination());
-		Assert.assertEquals("Majorstuen", iterator.next().getDestination());
+		RouteElement next = iterator.next();
+		Assert.assertEquals("Nasjonalteateret", next.getDestination());
+		next = iterator.next();
+		Assert.assertEquals("Majorstuen", next.getDestination());
 	}
 	
 	@Test
@@ -72,16 +74,18 @@ public class TrafikantenKillerTest
 			}
 		}
 		
-		//Route route = app.planTimeOptimizedRoute(jernbanetorget, majorstuen);
+		Route route = app.planTimeOptimizedRoute(jernbanetorget, majorstuen);
 		
-//		Iterator<RouteElement> iterator = route.iterator();
-//		Assert.assertNotNull(iterator);
-//		
-//		Assert.assertEquals("Jernbanetorget", iterator.next().getName());
-//		Assert.assertEquals("Nasjonalteateret", iterator.next().getName());
-//		Assert.assertEquals("Majorstuen", iterator.next().getName());
+		Iterator<RouteElement> iterator = route.iterator();
+		Assert.assertNotNull(iterator);
+		
+		RouteElement next = iterator.next();
+		Assert.assertEquals("Nasjonalteateret", next.getDestination());
+		Assert.assertEquals(Traveltype.SUB, next.getTravelType());
+		next = iterator.next();
+		Assert.assertEquals("Majorstuen", next.getDestination());
+		Assert.assertEquals(Traveltype.SUB, next.getTravelType());
 	}
-	
 	
 	@Test
 	public void testPrintingRoute(){
@@ -100,6 +104,12 @@ public class TrafikantenKillerTest
 		
 		String routeString = route.toString();
 		logger.info(routeString);
+	}
+	
+	@Test
+	public void testSearch(){
+		List<Station> list = app.searchForStation(".*o.*");
+		Assert.assertEquals(3, list.size());
 	}
 	
 }

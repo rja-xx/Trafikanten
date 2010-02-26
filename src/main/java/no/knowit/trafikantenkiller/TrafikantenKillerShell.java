@@ -2,7 +2,6 @@ package no.knowit.trafikantenkiller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -10,7 +9,6 @@ import java.util.Map.Entry;
 import no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException;
 import no.knowit.trafikantenkiller.exceptions.NotImplementedException;
 import no.knowit.trafikantenkiller.model.nodes.Station;
-import no.knowit.trafikantenkiller.model.relationships.Traveltype;
 import no.knowit.trafikantenkiller.route.Route;
 import no.knowit.trafikantenkiller.route.RouteElement;
 
@@ -27,14 +25,15 @@ public class TrafikantenKillerShell {
 		@Override
 		public String toString(){
 			StringBuilder sb = new StringBuilder();
-			sb.append("Rute mellom ").append(route.getStartingPoint().getDestination()).append(" og ").append(route.getEndPoint().getDestination()).append(":\n");
-			for (RouteElement routeElement : route) {
-				Traveltype travelBy = routeElement.getTravelType();
-				String travelType = travelBy==null?"":travelBy.getName()+" til ";
-				
-				String dest = routeElement.getDestination();
-				String destination = dest ==null?"":travelBy.getName()+" til ";
+			sb.append("Rute mellom ").append(route.getFrom()).append(" og ").append(route.getTo()).append(":\n");
+			for (RouteElement r : route) {
+				String travelBy = r.getTravelType().getName();
+				String dest = r.getDestination();
+				Integer dur = r.getDuration();
+				sb.append("Ta "+travelBy+" til "+dest+" det tar "+dur+" minutter.");
+				sb.append("\n");
 			}
+			sb.append("Turen tar totalt "+route.getTotalDuration()+" minutter");
 			return sb.toString();
 		}
 	}
@@ -79,6 +78,32 @@ public class TrafikantenKillerShell {
 		public void run() {
 		}
 	};
+	
+	private static final Command FIND_STATION_COMMAND = new Command("Finn stasjon") {
+		@Override
+		public void run() {
+			try {
+				System.out.println("Skriv in søketermen: ");
+				String searchTerm = ""; 
+				char c;
+				System.in.read();
+				while((c = (char)System.in.read()) != '\n'){
+					searchTerm += c;
+				}
+				searchTerm.trim();
+				searchTerm.replaceAll("\\*", ".*");
+				searchTerm = ".*"+searchTerm+".*";
+				System.out.println("Søker etter stasjoner som matcher '"+searchTerm+"'");
+				List<Station> result = trafikantenKiller.searchForStation(searchTerm);
+				System.out.println("Fant "+result.size()+" stasjoner:");
+				for (Station station : result) {
+					System.out.println(station.getName());
+				}
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	};
 
 	public static abstract class Command {
 
@@ -101,6 +126,7 @@ public class TrafikantenKillerShell {
 	static {
 		COMMANDS.put('i', INIT_COMMAND);
 		COMMANDS.put('s', MIN_HOP_COMMAND);
+		COMMANDS.put('f', FIND_STATION_COMMAND);
 		COMMANDS.put('t', MIN_TIME_COMMAND);
 		COMMANDS.put('a', EXIT_COMMAND);
 		COMMANDS.put('h', HELP_COMMAND);
@@ -150,7 +176,7 @@ public class TrafikantenKillerShell {
 			System.out.println("Velg endestasjon: ");
 			to = pickStation(stations);
 			Route route = trafikantenKiller.planTimeOptimizedRoute(from, to);
-			System.out.println(route);
+			System.out.println(new Routeprinter(route));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
