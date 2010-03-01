@@ -66,4 +66,8 @@ public class Route implements Iterable<RouteElement>
 		return res;
 	}
 
+	public int getHops() {
+		return this.routeElements.size();
+	}
+
 }

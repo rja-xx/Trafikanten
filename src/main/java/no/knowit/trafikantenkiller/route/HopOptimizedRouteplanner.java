@@ -1,7 +1,7 @@
 package no.knowit.trafikantenkiller.route;
 
-import no.knowit.trafikantenkiller.model.nodes.Station;
-import no.knowit.trafikantenkiller.model.relationships.Traveltype;
+import no.knowit.trafikantenkiller.domain.Station;
+import no.knowit.trafikantenkiller.domain.Traveltype;
 
 import org.apache.log4j.Logger;
 import org.neo4j.graphdb.Direction;
@@ -16,11 +16,6 @@ import org.neo4j.kernel.EmbeddedGraphDatabase;
 
 public class HopOptimizedRouteplanner implements Routeplanner {
 
-	private final EmbeddedGraphDatabase database;
-
-	public HopOptimizedRouteplanner(EmbeddedGraphDatabase database) {
-		this.database = database;
-	}
 
 	@Override
 	public Route planRoute(Station from, Station to) {
@@ -48,7 +43,6 @@ public class HopOptimizedRouteplanner implements Routeplanner {
 					Direction.OUTGOING);
 
 			Route.Builder routeBuilder = null;
-			int bestDepht = Integer.MAX_VALUE;
 			for (Node node : traverser) {
 				TraversalPosition currentPosition = traverser.currentPosition();
 				boolean isStartNode = currentPosition.isStartNode();
@@ -65,9 +59,9 @@ public class HopOptimizedRouteplanner implements Routeplanner {
 				routeBuilder.addRouteelement(routeElement);
 
 				if(node.getId() == endNode.getId()){
-					if(res == null || bestDepht > currentPosition.depth()){
-						res = routeBuilder.build();
-						bestDepht = currentPosition.depth();
+					Route temp = routeBuilder.build();
+					if(res == null || res.getHops() > temp.getHops()){
+						res = temp;
 					}
 				}
 			}

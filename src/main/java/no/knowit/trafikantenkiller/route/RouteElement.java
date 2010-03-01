@@ -1,6 +1,6 @@
 package no.knowit.trafikantenkiller.route;
 
-import no.knowit.trafikantenkiller.model.relationships.Traveltype;
+import no.knowit.trafikantenkiller.domain.Traveltype;
 
 public class RouteElement {
 

@@ -1,6 +1,6 @@
 package no.knowit.trafikantenkiller.route;
 
-import no.knowit.trafikantenkiller.model.nodes.Station;
+import no.knowit.trafikantenkiller.domain.Station;
 
 public interface Routeplanner {
 

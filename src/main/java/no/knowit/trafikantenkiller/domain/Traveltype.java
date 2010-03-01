@@ -1,4 +1,4 @@
-package no.knowit.trafikantenkiller.model.relationships;
+package no.knowit.trafikantenkiller.domain;
 
 import org.neo4j.graphdb.RelationshipType;
 
