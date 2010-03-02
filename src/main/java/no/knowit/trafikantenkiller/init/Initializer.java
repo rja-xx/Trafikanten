@@ -10,27 +10,13 @@ public class Initializer {
 
 	private static Logger logger = Logger.getLogger(Initializer.class);
 
-	public void initDatabase() {
-		DomainServices domainService = DomainServices.getInstance();
-		boolean graphExist = !domainService.searchStation(".*").isEmpty();
-		if (graphExist) {
-			throw new RuntimeException("Databasen er allerede satt opp!");
-		}
+	public void initDatabase(DomainServices domainServices) {
 
-		Station majorstuen = domainService.createStation();
-		majorstuen.setName("Majorstuen");
-
-		Station bislett = domainService.createStation();
-		bislett.setName("Bislett");
-
-		Station tullinlokka = domainService.createStation();
-		tullinlokka.setName("Tullinløkka");
-
-		Station nasjonalteateret = domainService.createStation();
-		nasjonalteateret.setName("Nasjonalteateret");
-
-		Station jernbanetorget = domainService.createStation();
-		jernbanetorget.setName("Jernbanetorget");
+		Station majorstuen = domainServices.createStation("Majorstuen");
+		Station bislett = domainServices.createStation("Bislett");
+		Station tullinlokka = domainServices.createStation("Tullinløkka");
+		Station nasjonalteateret = domainServices.createStation("Nasjonalteateret");
+		Station jernbanetorget = domainServices.createStation("Jernbanetorget");
 
 		createBidirectionalConnection(majorstuen, nasjonalteateret, 5, Traveltype.SUB);
 		createBidirectionalConnection(majorstuen, nasjonalteateret, 12, Traveltype.TRAM);

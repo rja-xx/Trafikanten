@@ -3,31 +3,67 @@ package no.knowit.trafikantenkiller;
 import java.util.List;
 
 import no.knowit.trafikantenkiller.domain.DomainServices;
+import no.knowit.trafikantenkiller.domain.SearchServices;
 import no.knowit.trafikantenkiller.domain.Station;
 import no.knowit.trafikantenkiller.init.Initializer;
+import no.knowit.trafikantenkiller.propertyutils.ApplickationProperties;
 import no.knowit.trafikantenkiller.route.Route;
-import no.knowit.trafikantenkiller.route.RouteplannerFactory;
+
+import org.neo4j.graphdb.Transaction;
+import org.neo4j.kernel.EmbeddedGraphDatabase;
 
 public class TrafikantenKiller {
 
+	private static final int BASE_NODE_ID = 1;
+	
+	private DomainServices domainServices;
+	private SearchServices searchServices;
+
+	public TrafikantenKiller(){
+		ApplickationProperties properties = ApplickationProperties.getInstance();
+		String databaseLocation = properties.getDatabaseLocation();
+		final EmbeddedGraphDatabase database = new EmbeddedGraphDatabase(databaseLocation);
+		Runtime.getRuntime().addShutdownHook(new Thread(){
+			public void run(){
+				database.shutdown();
+			}
+		});
+		Transaction tx = database.beginTx();
+		try{
+			domainServices = new DomainServices(database, database.getNodeById(BASE_NODE_ID));
+			searchServices = new SearchServices(database, database.getNodeById(BASE_NODE_ID));
+			tx.success();
+		}catch(Exception e){
+			tx.failure();
+			System.exit(-1);
+		}finally{
+			tx.finish();
+		}
+	}
+
+	
 	public Route planHopOptimizedRoute(Station from, Station to) {
-		return RouteplannerFactory.getHopOptimizedRouteplanner().planRoute(from, to);
+		return searchServices.findHopOptimizedRoute(from, to);
 	}
 
 	public Route planTimeOptimizedRoute(Station from, Station to) {
-		return RouteplannerFactory.getTimeOptimizedRouteplanner().planRoute(from, to);
+		return searchServices.findTimeoptimizedRoute(from, to);
 	}
 
 	public List<Station> getAvailableStations() {
-		return DomainServices.getInstance().searchStation(".*");
+		return searchServices.searchStation(".*");
 	}
 
 	public void initDatabase() {
-		new Initializer().initDatabase();
+		boolean graphExist = !searchServices.searchStation(".*").isEmpty();
+		if (graphExist) {
+			throw new RuntimeException("Databasen er allerede satt opp!");
+		}
+		new Initializer().initDatabase(domainServices);
 	}
 
 	public List<Station> searchForStation(String regexp) {
-		return DomainServices.getInstance().searchStation(regexp);
+		return searchServices.searchStation(regexp);
 	}
 
 }

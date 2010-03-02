@@ -36,7 +36,7 @@ public class TrafikantenKillerTest
 		
 		Route route = app.planHopOptimizedRoute(jernbanetorget, majorstuen);
 				
-		Assert.assertTrue("Hop-optimert rute mellom jernbanetorget og majorstuen skal bestå av maks to stopp.", route.getHops() <= 2);
+		Assert.assertTrue("Stoppoptimert rute mellom jernbanetorget og majorstuen skal bestå av maks to stopp.", route.getHops() <= 2);
 	}
 	
 	@Test
@@ -46,26 +46,19 @@ public class TrafikantenKillerTest
 		
 		Route route = app.planTimeOptimizedRoute(jernbanetorget, majorstuen);
 				
-		Assert.assertTrue("Hop-optimert rute mellom jernbanetorget og majorstuen skal bestå av maks to stopp.", route.getHops() <= 2);
+		Assert.assertTrue("Tidsoptimert rute mellom jernbanetorget og majorstuen skal ta maks 10 min.", route.getTotalDuration() <= 10);
 	}
 	
 	@Test
 	public void testSearch(){
 		List<Station> list = app.searchForStation(".*o.*");
-		Assert.assertEquals(3, list.size());
+		Assert.assertEquals("Ved søk på stasjoner skal rett resultat returneres.", 3, list.size());
 	}
 	
-
 	
-	//HELPER METHODS
 	private Station getStationByName(String stationName) {
-		Station res = null;
-		List<Station> stations = app.getAvailableStations();
-		for (Station s : stations) {
-			if(s.getName().equals(stationName)){
-				res = s;
-			}
-		}
-		return res;
+		List<Station> stations = app.searchForStation(stationName);
+		Assert.assertTrue("Søk på gyldig stasjonsnavn, "+stationName+", ska gi ett treff.", stations.size()==1);
+		return stations.get(0);
 	}
 }
