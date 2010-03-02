@@ -48,6 +48,26 @@ public class TrafikantenKillerTest
 				
 		Assert.assertTrue("Tidsoptimert rute mellom jernbanetorget og majorstuen skal ta maks 10 min.", route.getTotalDuration() <= 10);
 	}
+
+	@Test
+	public void testAtGangeTasMedIBeregningenRute(){
+		Station majorstuen = getStationByName("Majorstuen");
+		Station tullinlokka = getStationByName("Tullinløkka");
+		
+		Route route = app.planTimeOptimizedRoute(tullinlokka, majorstuen);
+				
+		Assert.assertTrue("Tidsoptimert rute mellom majorstuen og Tullinløkka skal ta maks 11 min.", route.getTotalDuration() <= 11);
+	}
+
+	@Test
+	public void testAtGangeTasMedIBeregningenRute2(){
+		Station majorstuen = getStationByName("Majorstuen");
+		Station bislett = getStationByName("Bislett");
+		
+		Route route = app.planHopOptimizedRoute(bislett, majorstuen);
+				
+		Assert.assertTrue("Stoppoptimert rute mellom majorstuen og bislett skal bestå av maks ett stopp.", route.getHops() <= 1);
+	}
 	
 	@Test
 	public void testSearch(){

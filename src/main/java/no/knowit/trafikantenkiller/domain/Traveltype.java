@@ -4,7 +4,8 @@ import org.neo4j.graphdb.RelationshipType;
 
 
 public enum Traveltype implements RelationshipType{
-	TRAM("Trikk"), SUB("T-bane");
+	
+	TRAM("Trikk"), SUB("T-bane"), WALK("Spasertur");
 	
 	private final String name;
 
@@ -15,4 +16,5 @@ public enum Traveltype implements RelationshipType{
 	public String getName() {
 		return name;
 	}
+	
 }

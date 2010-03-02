@@ -44,14 +44,15 @@
 
 		<dependency>
 			<groupId>org.neo4j</groupId>
-			<artifactId>neo4j-kernel</artifactId>
+			<artifactId>neo4j-apoc</artifactId>
 			<version>1.0</version>
+			<type>pom</type>
 		</dependency>
 
 		<dependency>
 			<groupId>org.neo4j</groupId>
-			<artifactId>neo4j-shell</artifactId>
-			<version>1.0</version>
+			<artifactId>neo4j-graph-algo</artifactId>
+			<version>0.4-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -85,13 +86,13 @@
 					</archive>
 				</configuration>
 				<executions>
-              <execution>
-                <phase>package</phase>
-                <goals>
-                  <goal>single</goal>
-                </goals>
-              </execution>
-            </executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
