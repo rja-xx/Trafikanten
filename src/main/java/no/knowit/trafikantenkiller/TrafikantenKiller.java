@@ -11,11 +11,11 @@ import no.knowit.trafikantenkiller.route.RouteplannerFactory;
 public class TrafikantenKiller {
 
 	public Route planHopOptimizedRoute(Station from, Station to) {
-		return DomainServices.getInstance().planRoute(from, to, RouteplannerFactory.getHopOptimizedRouteplanner());
+		return RouteplannerFactory.getHopOptimizedRouteplanner().planRoute(from, to);
 	}
 
 	public Route planTimeOptimizedRoute(Station from, Station to) {
-		return DomainServices.getInstance().planRoute(from, to,RouteplannerFactory.getTimeOptimizedRouteplanner());
+		return RouteplannerFactory.getTimeOptimizedRouteplanner().planRoute(from, to);
 	}
 
 	public List<Station> getAvailableStations() {

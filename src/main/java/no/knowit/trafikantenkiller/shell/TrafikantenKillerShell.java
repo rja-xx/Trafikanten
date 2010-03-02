@@ -101,8 +101,7 @@ public class TrafikantenKillerShell {
 		}
 	}
 
-	private static Station pickStation(List<Station> stations)
-			throws IOException {
+	private static Station pickStation(List<Station> stations) throws IOException {
 		int s;
 		int currentIndex;
 		char read;
