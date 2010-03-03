@@ -14,8 +14,6 @@ import org.neo4j.kernel.EmbeddedGraphDatabase;
 
 public class TrafikantenKiller {
 
-	private static final int BASE_NODE_ID = 1;
-	
 	private DomainServices domainServices;
 	private SearchServices searchServices;
 
@@ -30,8 +28,8 @@ public class TrafikantenKiller {
 		});
 		Transaction tx = database.beginTx();
 		try{
-			domainServices = new DomainServices(database, database.getNodeById(BASE_NODE_ID));
-			searchServices = new SearchServices(database, database.getNodeById(BASE_NODE_ID));
+			domainServices = new DomainServices(database);
+			searchServices = new SearchServices(database);
 			tx.success();
 		}catch(Exception e){
 			tx.failure();

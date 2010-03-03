@@ -26,8 +26,8 @@ public class TrafikantenKillerShell {
 	private static TrafikantenKiller trafikantenKiller = new TrafikantenKiller();
 
 	public static void main(String[] args) throws IOException {
+		printHelpmessage();
 		while (true) {
-			printHelpmessage();
 			try {
 				byte read = (byte) System.in.read();
 				Command command = COMMANDS.get(Character.valueOf((char) read));
@@ -38,7 +38,8 @@ public class TrafikantenKillerShell {
 					System.out.println("Ukjent oppgave!");
 				} else {
 					continue;
-				}
+				}		
+				printHelpmessage();
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}

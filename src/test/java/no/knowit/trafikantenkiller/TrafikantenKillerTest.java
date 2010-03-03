@@ -72,7 +72,7 @@ public class TrafikantenKillerTest
 	@Test
 	public void testSearch(){
 		List<Station> list = app.searchForStation(".*o.*");
-		Assert.assertEquals("Ved søk på stasjoner skal rett resultat returneres.", 3, list.size());
+		Assert.assertEquals("Ved søk på stasjoner skal rett resultat returneres.", 6, list.size());
 	}
 	
 	

@@ -65,7 +65,7 @@ public class Station {
 	}
 
 	public void addConnection(Station destination, int duration, Traveltype traveltype) {
-		Relationship relationship = this.underlyingNode.createRelationshipTo(destination.underlyingNode, traveltype);
+		Relationship relationship = this.underlyingNode.createRelationshipTo(destination.getUnderlyingNode(), traveltype);
 		Connection connection = new Connection(relationship);
 		connection.setDuration(duration);
 	}

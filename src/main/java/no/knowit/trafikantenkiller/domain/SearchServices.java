@@ -37,7 +37,6 @@ public class SearchServices {
 
 	private final EmbeddedGraphDatabase database;
 
-	private final Node basenode;
 
 	private final static IntegerEvaluator COST_EVALUATOR= new IntegerEvaluator(null){
 		@Override
@@ -46,9 +45,8 @@ public class SearchServices {
 		}
 	};;
 
-	public SearchServices(EmbeddedGraphDatabase database, Node basenode) {
+	public SearchServices(EmbeddedGraphDatabase database) {
 		this.database = database;
-		this.basenode = basenode;
 	}
 
 	public List<Station> searchStation(String regexp) {
@@ -67,7 +65,7 @@ public class SearchServices {
 	}
 
 	private void findMatchingStations(String regexp, List<Station> res) {
-		Iterable<Relationship> relationships = basenode.getRelationships(
+		Iterable<Relationship> relationships = getBasenode().getRelationships(
 				Table.STATIONS, Direction.OUTGOING);
 		for (Relationship relationship : relationships) {
 			Station station = new Station(relationship.getEndNode());
@@ -75,6 +73,10 @@ public class SearchServices {
 				res.add(station);
 			}
 		}
+	}
+
+	private Node getBasenode() {
+		return this.database.getNodeById(0);
 	}
 
 	public Route findHopOptimizedRoute(Station from, Station to) {

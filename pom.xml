@@ -81,7 +81,7 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>no.knowit.trafikantenkiller.TrafikantenKillerShell</mainClass>
+							<mainClass>no.knowit.trafikantenkiller.shell.TrafikantenKillerShell</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
