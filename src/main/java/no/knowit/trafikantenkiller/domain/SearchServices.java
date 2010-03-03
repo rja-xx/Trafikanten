@@ -17,7 +17,11 @@ import org.neo4j.graphalgo.shortestpath.std.IntegerEvaluator;
 import org.neo4j.graphdb.Direction;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
+import org.neo4j.graphdb.ReturnableEvaluator;
+import org.neo4j.graphdb.StopEvaluator;
 import org.neo4j.graphdb.Transaction;
+import org.neo4j.graphdb.Traverser;
+import org.neo4j.graphdb.Traverser.Order;
 import org.neo4j.kernel.EmbeddedGraphDatabase;
 
 public class SearchServices {
@@ -36,7 +40,6 @@ public class SearchServices {
 	private static Logger logger = Logger.getLogger(SearchServices.class);
 
 	private final EmbeddedGraphDatabase database;
-
 
 	private final static IntegerEvaluator COST_EVALUATOR= new IntegerEvaluator(null){
 		@Override
@@ -142,6 +145,26 @@ public class SearchServices {
 		path = shortestPathCalculator
 				.getPathAsRelationships();
 		return path;
+	}
+
+	public boolean connectionExists(Station from, Station to) {
+		Transaction tx = database.beginTx();
+		try{
+		Traverser traverser = from.getUnderlyingNode().traverse(Order.DEPTH_FIRST, StopEvaluator.END_OF_GRAPH, ReturnableEvaluator.ALL, OUTGOING_TRAVELTYPES);
+		for (Node node : traverser) {
+			Station currentStation = new Station(node);
+			if(currentStation.equals(to)){
+				return true;
+			}
+		}
+		tx.success();
+		}catch (Exception e) {
+			logger.error("Klarte ikke å finne ut om forbindelsen mellom "+from+" og "+to+" finnes.", e);
+			tx.failure();
+		}finally{
+			tx.finish();
+		}
+		return false;
 	}
 
 }

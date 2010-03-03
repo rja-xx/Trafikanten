@@ -64,4 +64,9 @@ public class TrafikantenKiller {
 		return searchServices.searchStation(regexp);
 	}
 
+
+	public boolean connectionExists(Station from, Station to) {
+		return searchServices.connectionExists(from, to);
+	}
+
 }

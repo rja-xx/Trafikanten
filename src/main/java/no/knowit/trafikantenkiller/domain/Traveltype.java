@@ -5,7 +5,7 @@ import org.neo4j.graphdb.RelationshipType;
 
 public enum Traveltype implements RelationshipType{
 	
-	TRAM("Trikk"), SUB("T-bane"), WALK("Spasertur"), AIRPORT_EXPRESS("Flytåget"), AIRPLANE("Fly"), BUS("Buss");
+	TRAM("Trikk"), SUB("T-bane"), WALK("Spasertur"), AIRPORT_EXPRESS("Flytåget"), AIRPLANE("Fly"), BUS("Buss"), AIRPORT_BUS("Flybussen");
 	
 	private final String name;
 

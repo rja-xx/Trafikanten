@@ -38,11 +38,12 @@ public class Initializer {
 		domainServices.createBidirectionalConnection(jernbanetorget, gardermoen, 19, Traveltype.AIRPORT_EXPRESS);
 		domainServices.createBidirectionalConnection(gardermoen, altaLufthavn, 150, Traveltype.AIRPLANE);
 		domainServices.createBidirectionalConnection(altaLufthavn, elvebakken, 8, Traveltype.WALK);
-		domainServices.createBidirectionalConnection(altaLufthavn, city, 15, Traveltype.BUS);
+		domainServices.createBidirectionalConnection(altaLufthavn, city, 15, Traveltype.AIRPORT_BUS);
 		
 		domainServices.createBidirectionalConnection(bossekopp, city, 15, Traveltype.BUS);
 		domainServices.createBidirectionalConnection(city, sentrum, 5, Traveltype.BUS);
-		domainServices.createBidirectionalConnection(sentrum, kronstad, 10, Traveltype.BUS);
+		domainServices.createBidirectionalConnection(sentrum, elvebakken, 10, Traveltype.BUS);
+		domainServices.createBidirectionalConnection(elvebakken, kronstad, 10, Traveltype.BUS);
 
 		logger.info("Du er nå klar for workshopen!");
 	}

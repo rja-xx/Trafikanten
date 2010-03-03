@@ -75,6 +75,14 @@ public class TrafikantenKillerTest
 		Assert.assertEquals("Ved søk på stasjoner skal rett resultat returneres.", 6, list.size());
 	}
 	
+//	@Test
+//	public void testSjekkAtForbindelseFinnes(){
+//		Station bislett = getStationByName("Bislett");
+//		Station kronstad = getStationByName("Kronstad");
+//		boolean connectionExists = app.connectionExists(bislett, kronstad);
+//		Assert.assertTrue("Forbindelse mellom bislett og kronstad eksisterer", connectionExists);
+//	}
+	
 	
 	private Station getStationByName(String stationName) {
 		List<Station> stations = app.searchForStation(stationName);

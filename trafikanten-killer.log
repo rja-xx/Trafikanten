@@ -13,3 +13,27 @@ no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException: Databasen er a
 	at no.knowit.trafikantenkiller.init.Initializer.initDatabase(Initializer.java:27)
 	at no.knowit.trafikantenkiller.TrafikantenKiller.initDatabase(TrafikantenKiller.java:88)
 	at no.knowit.trafikantenkiller.TrafikantenKillerShell.main(TrafikantenKillerShell.java:40)
+03-03@13:24:32 ERROR (SearchServices.java:94)     - Klarte ikke å finne hop-optimert rute mellom Elvebakken og Majorstuen
+java.lang.NullPointerException
+	at no.knowit.trafikantenkiller.domain.SearchServices.buildRoute(SearchServices.java:124)
+	at no.knowit.trafikantenkiller.domain.SearchServices.findHopOptimizedRoute(SearchServices.java:91)
+	at no.knowit.trafikantenkiller.TrafikantenKiller.planHopOptimizedRoute(TrafikantenKiller.java:44)
+	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.getHopOptimizedRoute(TrafikantenKillerShell.java:74)
+	at no.knowit.trafikantenkiller.shell.Command$3.run(Command.java:35)
+	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.main(TrafikantenKillerShell.java:38)
+03-03@13:27:03 ERROR (SearchServices.java:94)     - Klarte ikke å finne hop-optimert rute mellom Elvebakken og Majorstuen
+java.lang.NullPointerException
+	at no.knowit.trafikantenkiller.domain.SearchServices.buildRoute(SearchServices.java:124)
+	at no.knowit.trafikantenkiller.domain.SearchServices.findHopOptimizedRoute(SearchServices.java:91)
+	at no.knowit.trafikantenkiller.TrafikantenKiller.planHopOptimizedRoute(TrafikantenKiller.java:44)
+	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.getHopOptimizedRoute(TrafikantenKillerShell.java:75)
+	at no.knowit.trafikantenkiller.shell.Command$3.run(Command.java:35)
+	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.main(TrafikantenKillerShell.java:38)
+03-03@13:29:13 ERROR (SearchServices.java:113)     - Klarte ikke å finne tids-optimert rute mellom Kronstad og Majorstuen
+java.lang.NullPointerException
+	at no.knowit.trafikantenkiller.domain.SearchServices.buildRoute(SearchServices.java:124)
+	at no.knowit.trafikantenkiller.domain.SearchServices.findTimeoptimizedRoute(SearchServices.java:110)
+	at no.knowit.trafikantenkiller.TrafikantenKiller.planTimeOptimizedRoute(TrafikantenKiller.java:48)
+	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.getTimeOptimizedRoute(TrafikantenKillerShell.java:58)
+	at no.knowit.trafikantenkiller.shell.Command$2.run(Command.java:29)
+	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.main(TrafikantenKillerShell.java:38)

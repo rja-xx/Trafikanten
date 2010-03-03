@@ -46,7 +46,7 @@ public abstract class Command {
 		static final Command HELP_COMMAND = new Command("Hjelp") {
 			@Override
 			public void run() {
-				
+				TrafikantenKillerShell.printHelpmessage();
 			}
 		};
 		
@@ -54,6 +54,13 @@ public abstract class Command {
 			@Override
 			public void run() {
 				TrafikantenKillerShell.findStation();
+			}
+		};
+		
+		public static final Command ROUTE_EXISTS_COMMAND = new Command("Finnes rute mellom?") {
+			@Override
+			public void run() {
+				TrafikantenKillerShell.routeExistsBetween();
 			}
 		};
 
