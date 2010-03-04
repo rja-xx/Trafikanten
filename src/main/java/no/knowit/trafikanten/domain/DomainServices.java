@@ -1,12 +1,13 @@
-package no.knowit.trafikantenkiller.domain;
-
-import no.knowit.trafikantenkiller.init.Table;
+package no.knowit.trafikanten.domain;
 
 import org.apache.log4j.Logger;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.kernel.EmbeddedGraphDatabase;
 
+/**
+ * Denne klassen inneholder alle tjenestene som er koblet til skape innehold i databasen.
+ */
 public class DomainServices {
 
 	private static Logger logger = Logger.getLogger(DomainServices.class);
@@ -21,7 +22,7 @@ public class DomainServices {
 		Transaction tx = database.beginTx();
 		try {
 			Node node = database.createNode();
-			getBasenode().createRelationshipTo(node, Table.STATIONS);
+			getReferencenode().createRelationshipTo(node, Station.TABLE);
 			res = new Station(node);
 			res.setName(name);
 			logger.info("Created new station: " + name);
@@ -35,11 +36,11 @@ public class DomainServices {
 		return res;
 	}
 
-	private Node getBasenode() {
+	private Node getReferencenode() {
 		return database.getNodeById(0);
 	}
 
-	public void createBidirectionalConnection(Station from, Station to, int duration, Traveltype type) {
+	public void createBidirectionalConnection(Station from, Station to, int duration, Connectiontype type) {
 		Transaction tx = database.beginTx();
 		try {
 			from.addConnection(to, duration, type);

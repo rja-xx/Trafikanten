@@ -1,12 +1,18 @@
-package no.knowit.trafikantenkiller.route;
+package no.knowit.trafikanten.route;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Denne klassen representerer en rute. Denne er laget så immutable som mulig. 
+ */
 public class Route implements Iterable<RouteElement>
-{
+{ 
 
+	/**
+	 * For at Route skal være immutable så brukes denne Builderen for å skape instanser av Route. 
+	 */
 	public static class Builder {
 		
 		private final List<RouteElement> routeElements = new LinkedList<RouteElement>();
@@ -26,8 +32,11 @@ public class Route implements Iterable<RouteElement>
 		}
 
 	}
-	
+
+	/** Samtlige element i ruten untagen det første */
 	private final List<RouteElement> routeElements = new LinkedList<RouteElement>();
+	
+	/** Startpunktet for denne ruten er definert mha denne strengen. */
 	private final String from;
 
 	private Route(String from, List<RouteElement> routeElements) {
@@ -40,6 +49,10 @@ public class Route implements Iterable<RouteElement>
 		return this.routeElements.iterator();
 	}
 
+	/**
+	 * Returnerer en string som beskriver instansen.
+	 * Denne metoden skal ikke brukes i UI.
+	 */
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();

@@ -1,39 +1,167 @@
 02-25@14:50:18 FATAL (Initializer.java:72)     - Kunne ikke skape demonstrasjonsdatabase.
-no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException: Databasen er allerede satt opp!
-	at no.knowit.trafikantenkiller.init.Initializer.initDatabase(Initializer.java:27)
-	at no.knowit.trafikantenkiller.TrafikantenKiller.initDatabase(TrafikantenKiller.java:88)
-	at no.knowit.trafikantenkiller.TrafikantenKillerShell.main(TrafikantenKillerShell.java:40)
+no.knowit.trafikanten.exceptions.AlreadyInitiatedException: Databasen er allerede satt opp!
+	at no.knowit.trafikanten.init.Initializer.initDatabase(Initializer.java:27)
+	at no.knowit.trafikanten.Trafikanten.initDatabase(Trafikanten.java:88)
+	at no.knowit.trafikanten.TrafikantenShell.main(TrafikantenShell.java:40)
 02-25@14:51:48 FATAL (Initializer.java:72)     - Kunne ikke skape demonstrasjonsdatabase.
-no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException: Databasen er allerede satt opp!
-	at no.knowit.trafikantenkiller.init.Initializer.initDatabase(Initializer.java:27)
-	at no.knowit.trafikantenkiller.TrafikantenKiller.initDatabase(TrafikantenKiller.java:88)
-	at no.knowit.trafikantenkiller.TrafikantenKillerShell.main(TrafikantenKillerShell.java:40)
+no.knowit.trafikanten.exceptions.AlreadyInitiatedException: Databasen er allerede satt opp!
+	at no.knowit.trafikanten.init.Initializer.initDatabase(Initializer.java:27)
+	at no.knowit.trafikanten.Trafikanten.initDatabase(Trafikanten.java:88)
+	at no.knowit.trafikanten.TrafikantenShell.main(TrafikantenShell.java:40)
 02-25@14:51:50 FATAL (Initializer.java:72)     - Kunne ikke skape demonstrasjonsdatabase.
-no.knowit.trafikantenkiller.exceptions.AlreadyInitiatedException: Databasen er allerede satt opp!
-	at no.knowit.trafikantenkiller.init.Initializer.initDatabase(Initializer.java:27)
-	at no.knowit.trafikantenkiller.TrafikantenKiller.initDatabase(TrafikantenKiller.java:88)
-	at no.knowit.trafikantenkiller.TrafikantenKillerShell.main(TrafikantenKillerShell.java:40)
+no.knowit.trafikanten.exceptions.AlreadyInitiatedException: Databasen er allerede satt opp!
+	at no.knowit.trafikanten.init.Initializer.initDatabase(Initializer.java:27)
+	at no.knowit.trafikanten.Trafikanten.initDatabase(Trafikanten.java:88)
+	at no.knowit.trafikanten.TrafikantenShell.main(TrafikantenShell.java:40)
 03-03@13:24:32 ERROR (SearchServices.java:94)     - Klarte ikke å finne hop-optimert rute mellom Elvebakken og Majorstuen
 java.lang.NullPointerException
-	at no.knowit.trafikantenkiller.domain.SearchServices.buildRoute(SearchServices.java:124)
-	at no.knowit.trafikantenkiller.domain.SearchServices.findHopOptimizedRoute(SearchServices.java:91)
-	at no.knowit.trafikantenkiller.TrafikantenKiller.planHopOptimizedRoute(TrafikantenKiller.java:44)
-	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.getHopOptimizedRoute(TrafikantenKillerShell.java:74)
-	at no.knowit.trafikantenkiller.shell.Command$3.run(Command.java:35)
-	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.main(TrafikantenKillerShell.java:38)
+	at no.knowit.trafikanten.domain.SearchServices.buildRoute(SearchServices.java:124)
+	at no.knowit.trafikanten.domain.SearchServices.findHopOptimizedRoute(SearchServices.java:91)
+	at no.knowit.trafikanten.Trafikanten.planHopOptimizedRoute(Trafikanten.java:44)
+	at no.knowit.trafikanten.shell.TrafikantenShell.getHopOptimizedRoute(TrafikantenShell.java:74)
+	at no.knowit.trafikanten.shell.Command$3.run(Command.java:35)
+	at no.knowit.trafikanten.shell.TrafikantenShell.main(TrafikantenShell.java:38)
 03-03@13:27:03 ERROR (SearchServices.java:94)     - Klarte ikke å finne hop-optimert rute mellom Elvebakken og Majorstuen
 java.lang.NullPointerException
-	at no.knowit.trafikantenkiller.domain.SearchServices.buildRoute(SearchServices.java:124)
-	at no.knowit.trafikantenkiller.domain.SearchServices.findHopOptimizedRoute(SearchServices.java:91)
-	at no.knowit.trafikantenkiller.TrafikantenKiller.planHopOptimizedRoute(TrafikantenKiller.java:44)
-	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.getHopOptimizedRoute(TrafikantenKillerShell.java:75)
-	at no.knowit.trafikantenkiller.shell.Command$3.run(Command.java:35)
-	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.main(TrafikantenKillerShell.java:38)
+	at no.knowit.trafikanten.domain.SearchServices.buildRoute(SearchServices.java:124)
+	at no.knowit.trafikanten.domain.SearchServices.findHopOptimizedRoute(SearchServices.java:91)
+	at no.knowit.trafikanten.Trafikanten.planHopOptimizedRoute(Trafikanten.java:44)
+	at no.knowit.trafikanten.shell.TrafikantenShell.getHopOptimizedRoute(TrafikantenShell.java:75)
+	at no.knowit.trafikanten.shell.Command$3.run(Command.java:35)
+	at no.knowit.trafikanten.shell.TrafikantenShell.main(TrafikantenShell.java:38)
 03-03@13:29:13 ERROR (SearchServices.java:113)     - Klarte ikke å finne tids-optimert rute mellom Kronstad og Majorstuen
 java.lang.NullPointerException
-	at no.knowit.trafikantenkiller.domain.SearchServices.buildRoute(SearchServices.java:124)
-	at no.knowit.trafikantenkiller.domain.SearchServices.findTimeoptimizedRoute(SearchServices.java:110)
-	at no.knowit.trafikantenkiller.TrafikantenKiller.planTimeOptimizedRoute(TrafikantenKiller.java:48)
-	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.getTimeOptimizedRoute(TrafikantenKillerShell.java:58)
-	at no.knowit.trafikantenkiller.shell.Command$2.run(Command.java:29)
-	at no.knowit.trafikantenkiller.shell.TrafikantenKillerShell.main(TrafikantenKillerShell.java:38)
+	at no.knowit.trafikanten.domain.SearchServices.buildRoute(SearchServices.java:124)
+	at no.knowit.trafikanten.domain.SearchServices.findTimeoptimizedRoute(SearchServices.java:110)
+	at no.knowit.trafikanten.Trafikanten.planTimeOptimizedRoute(Trafikanten.java:48)
+	at no.knowit.trafikanten.shell.TrafikantenShell.getTimeOptimizedRoute(TrafikantenShell.java:58)
+	at no.knowit.trafikanten.shell.Command$2.run(Command.java:29)
+	at no.knowit.trafikanten.shell.TrafikantenShell.main(TrafikantenShell.java:38)
+03-04@12:39:41 INFO  (TrafikantenTest.java:30)     - Databasen er allerede satt opp!
+03-04@12:39:41 INFO  (TrafikantenTest.java:66)     - Databasen er allerede satt opp!
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Majorstuen
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Bislett
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Tullinløkka
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Nasjonalteateret
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Jernbanetorget
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Gardermoen
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Alta Lufthavn
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Alta Sentrum
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Alta City
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Kronstad
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Bossekopp
+03-04@12:40:29 INFO  (DomainServices.java:27)     - Created new station: Elvebakken
+03-04@12:40:29 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Majorstuen og Nasjonalteateret
+03-04@12:40:29 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Majorstuen og Nasjonalteateret
+03-04@12:40:29 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Nasjonalteateret
+03-04@12:40:29 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Nasjonalteateret
+03-04@12:40:29 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Tullinløkka
+03-04@12:40:29 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bislett og Tullinløkka
+03-04@12:40:29 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bislett og Majorstuen
+03-04@12:40:30 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Nasjonalteateret og Tullinløkka
+03-04@12:40:30 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Gardermoen
+03-04@12:40:30 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Gardermoen og Alta Lufthavn
+03-04@12:40:30 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Lufthavn og Elvebakken
+03-04@12:40:30 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Lufthavn og Alta City
+03-04@12:40:30 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bossekopp og Alta City
+03-04@12:40:30 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta City og Alta Sentrum
+03-04@12:40:30 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Sentrum og Elvebakken
+03-04@12:40:30 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Elvebakken og Kronstad
+03-04@12:40:30 INFO  (Initializer.java:48)     - Du er nå klar for workshopen!
+03-04@12:40:30 INFO  (TrafikantenTest.java:66)     - Databasen er allerede satt opp!
+03-04@12:40:31 INFO  (TrafikantenTest.java:30)     - Databasen er allerede satt opp!
+03-04@12:40:31 INFO  (TrafikantenTest.java:66)     - Databasen er allerede satt opp!
+03-04@12:40:50 INFO  (TrafikantenTest.java:30)     - Databasen er allerede satt opp!
+03-04@12:40:50 INFO  (TrafikantenTest.java:66)     - Databasen er allerede satt opp!
+03-04@12:47:54 INFO  (TrafikantenTest.java:32)     - Databasen er allerede satt opp!
+03-04@12:49:10 INFO  (TrafikantenTest.java:32)     - Databasen er allerede satt opp!
+03-04@13:05:46 INFO  (TrafikantenTest.java:32)     - Skaper database i /tmp/trafikanten6003681846254474689tdb
+03-04@13:05:48 INFO  (DomainServices.java:27)     - Created new station: Majorstuen
+03-04@13:05:48 INFO  (DomainServices.java:27)     - Created new station: Bislett
+03-04@13:05:48 INFO  (DomainServices.java:27)     - Created new station: Tullinløkka
+03-04@13:05:48 INFO  (DomainServices.java:27)     - Created new station: Nasjonalteateret
+03-04@13:05:48 INFO  (DomainServices.java:27)     - Created new station: Jernbanetorget
+03-04@13:05:48 INFO  (DomainServices.java:27)     - Created new station: Gardermoen
+03-04@13:05:48 INFO  (DomainServices.java:27)     - Created new station: Alta Lufthavn
+03-04@13:05:48 INFO  (DomainServices.java:27)     - Created new station: Alta Sentrum
+03-04@13:05:48 INFO  (DomainServices.java:27)     - Created new station: Alta City
+03-04@13:05:48 INFO  (DomainServices.java:27)     - Created new station: Kronstad
+03-04@13:05:49 INFO  (DomainServices.java:27)     - Created new station: Bossekopp
+03-04@13:05:49 INFO  (DomainServices.java:27)     - Created new station: Elvebakken
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Majorstuen og Nasjonalteateret
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Majorstuen og Nasjonalteateret
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Nasjonalteateret
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Nasjonalteateret
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Tullinløkka
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bislett og Tullinløkka
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bislett og Majorstuen
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Nasjonalteateret og Tullinløkka
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Gardermoen
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Gardermoen og Alta Lufthavn
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Lufthavn og Elvebakken
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Lufthavn og Alta City
+03-04@13:05:49 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bossekopp og Alta City
+03-04@13:05:50 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta City og Alta Sentrum
+03-04@13:05:50 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Sentrum og Elvebakken
+03-04@13:05:50 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Elvebakken og Kronstad
+03-04@13:05:50 INFO  (Initializer.java:48)     - Du er nå klar for workshopen!
+03-04@13:06:43 INFO  (TrafikantenTest.java:33)     - Skaper database i /tmp/trafikanten5206673219238024102tdb
+03-04@13:06:45 INFO  (DomainServices.java:27)     - Created new station: Majorstuen
+03-04@13:06:45 INFO  (DomainServices.java:27)     - Created new station: Bislett
+03-04@13:06:45 INFO  (DomainServices.java:27)     - Created new station: Tullinløkka
+03-04@13:06:46 INFO  (DomainServices.java:27)     - Created new station: Nasjonalteateret
+03-04@13:06:46 INFO  (DomainServices.java:27)     - Created new station: Jernbanetorget
+03-04@13:06:46 INFO  (DomainServices.java:27)     - Created new station: Gardermoen
+03-04@13:06:46 INFO  (DomainServices.java:27)     - Created new station: Alta Lufthavn
+03-04@13:06:46 INFO  (DomainServices.java:27)     - Created new station: Alta Sentrum
+03-04@13:06:46 INFO  (DomainServices.java:27)     - Created new station: Alta City
+03-04@13:06:46 INFO  (DomainServices.java:27)     - Created new station: Kronstad
+03-04@13:06:46 INFO  (DomainServices.java:27)     - Created new station: Bossekopp
+03-04@13:06:46 INFO  (DomainServices.java:27)     - Created new station: Elvebakken
+03-04@13:06:46 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Majorstuen og Nasjonalteateret
+03-04@13:06:46 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Majorstuen og Nasjonalteateret
+03-04@13:06:46 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Nasjonalteateret
+03-04@13:06:46 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Nasjonalteateret
+03-04@13:06:46 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Tullinløkka
+03-04@13:06:46 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bislett og Tullinløkka
+03-04@13:06:46 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bislett og Majorstuen
+03-04@13:06:46 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Nasjonalteateret og Tullinløkka
+03-04@13:06:46 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Gardermoen
+03-04@13:06:47 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Gardermoen og Alta Lufthavn
+03-04@13:06:47 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Lufthavn og Elvebakken
+03-04@13:06:47 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Lufthavn og Alta City
+03-04@13:06:47 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bossekopp og Alta City
+03-04@13:06:47 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta City og Alta Sentrum
+03-04@13:06:47 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Sentrum og Elvebakken
+03-04@13:06:47 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Elvebakken og Kronstad
+03-04@13:06:47 INFO  (Initializer.java:48)     - Du er nå klar for workshopen!
+03-04@13:07:25 INFO  (TrafikantenTest.java:33)     - Skaper database i /tmp/trafikanten7580835812362169459tdb
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Majorstuen
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Bislett
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Tullinløkka
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Nasjonalteateret
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Jernbanetorget
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Gardermoen
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Alta Lufthavn
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Alta Sentrum
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Alta City
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Kronstad
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Bossekopp
+03-04@13:07:27 INFO  (DomainServices.java:27)     - Created new station: Elvebakken
+03-04@13:07:27 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Majorstuen og Nasjonalteateret
+03-04@13:07:27 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Majorstuen og Nasjonalteateret
+03-04@13:07:27 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Nasjonalteateret
+03-04@13:07:27 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Nasjonalteateret
+03-04@13:07:27 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Tullinløkka
+03-04@13:07:27 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bislett og Tullinløkka
+03-04@13:07:27 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bislett og Majorstuen
+03-04@13:07:28 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Nasjonalteateret og Tullinløkka
+03-04@13:07:28 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Jernbanetorget og Gardermoen
+03-04@13:07:28 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Gardermoen og Alta Lufthavn
+03-04@13:07:28 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Lufthavn og Elvebakken
+03-04@13:07:28 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Lufthavn og Alta City
+03-04@13:07:28 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Bossekopp og Alta City
+03-04@13:07:28 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta City og Alta Sentrum
+03-04@13:07:28 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Alta Sentrum og Elvebakken
+03-04@13:07:28 INFO  (DomainServices.java:47)     - Opprettet forbindese mellom Elvebakken og Kronstad
+03-04@13:07:28 INFO  (Initializer.java:48)     - Du er nå klar for workshopen!

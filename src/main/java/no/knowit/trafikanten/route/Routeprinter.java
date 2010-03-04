@@ -1,10 +1,10 @@
-package no.knowit.trafikantenkiller.shell;
+package no.knowit.trafikanten.route;
 
-import no.knowit.trafikantenkiller.route.Route;
-import no.knowit.trafikantenkiller.route.RouteElement;
 
+/**
+ * Denne klassen skriver ut ruter på en pen og pyntelig måte.
+ */
 public class Routeprinter {
-
 
 		private final Route route;
 
