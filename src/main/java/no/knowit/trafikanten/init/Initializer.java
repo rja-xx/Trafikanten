@@ -39,7 +39,6 @@ public class Initializer {
 		domainServices.createBidirectionalConnection(nasjonalteateret, tullinlokka, 5, Connectiontype.WALK);
 		
 		domainServices.createBidirectionalConnection(jernbanetorget, gardermoen, 19, Connectiontype.AIRPORT_EXPRESS);
-		domainServices.createBidirectionalConnection(gardermoen, altaLufthavn, 150, Connectiontype.AIRPLANE);
 		domainServices.createBidirectionalConnection(altaLufthavn, elvebakken, 8, Connectiontype.WALK);
 		domainServices.createBidirectionalConnection(altaLufthavn, city, 15, Connectiontype.AIRPORT_BUS);
 		

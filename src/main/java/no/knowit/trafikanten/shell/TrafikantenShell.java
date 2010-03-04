@@ -7,6 +7,9 @@ import java.util.Map.Entry;
 
 import no.knowit.trafikanten.Trafikanten;
 
+import org.apache.log4j.Logger;
+import org.neo4j.graphdb.Transaction;
+
 /**
  * Mainklassen for trafikanten 2.
  * Denne klassen lar brukeren velge mellom noen kommandoer via et textbasert UI.
@@ -14,6 +17,7 @@ import no.knowit.trafikanten.Trafikanten;
  */
 public class TrafikantenShell {
 
+	private static Logger logger = Logger.getLogger(TrafikantenShell.class);
 	private static final Map<String, Command> COMMANDS = new HashMap<String, Command>();
 	static Trafikanten trafikanten;
 
@@ -38,21 +42,39 @@ public class TrafikantenShell {
 
 	private static void readExecuteLoop() {
 		while (true) {
+			Command command = null;
+			System.out.println();
+			System.out.print("trafikanten>");
 			try {
-				System.out.println();
-				System.out.print("trafikanten>");
 				String read = readCommand();
-				Command command = COMMANDS.get(read );
+				command = COMMANDS.get(read );
 				if (command != null) {
 					System.out.println("Du valgte: " + command);
-					command.run();
+					executeInTransaction(command);
 				} else {
 					System.out.println("Ukjent oppgave!");
 					printHelpmessage();
 				}
+			} catch (IOException e) {
+				logger.error("Misslyktes med å lese in kommandoen ", e);
+				System.out.println(e.getMessage());
 			} catch (Exception e) {
+				logger.error("Misslyktes med å gjennomføre "+command, e);
 				System.out.println(e.getMessage());
 			}
+		}
+	}
+
+	private static void executeInTransaction(Command command) {
+		Transaction tx = trafikanten.beginTransaction();
+		try{
+			command.run();
+			tx.success();
+		}catch (Exception e) {
+			tx.failure();
+			throw new RuntimeException(e);
+		}finally{
+			tx.finish();
 		}
 	}
 

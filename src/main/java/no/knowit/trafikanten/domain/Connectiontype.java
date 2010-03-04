@@ -7,7 +7,7 @@ import org.neo4j.graphdb.RelationshipType;
  */
 public enum Connectiontype implements RelationshipType{
 	
-	TRAM("Trikk"), SUB("T-bane"), WALK("Spasertur"), AIRPORT_EXPRESS("Flytåget"), AIRPLANE("Fly"), BUS("Buss"), AIRPORT_BUS("Flybussen");
+	TRAM("Trikk"), SUB("T-bane"), WALK("Spasertur"), AIRPORT_EXPRESS("Flytåget"), BUS("Buss"), AIRPORT_BUS("Flybussen");
 	
 	private final String name;
 
