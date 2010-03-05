@@ -1,0 +1,11 @@
+NEO4J WORKSHOP
+
+Du trenger Maven2 og ett IDE. (GIT er frivillig)
+
+Last ned prosjektet:
+	Enten som et zip-arkiv(todo: link) eller direkte via git.(todo: link)
+	
+Bygg prosjektet mha maven 2:
+  	mvn clean install -Dmaven.test.skip=true
+  	
+  
