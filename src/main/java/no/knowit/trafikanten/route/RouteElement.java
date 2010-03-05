@@ -2,28 +2,28 @@ package no.knowit.trafikanten.route;
 
 import no.knowit.trafikanten.domain.Connectiontype;
 
-public class RouteElement {
+class RouteElement {
 	
 	private final String destination;
 	private final Connectiontype travelType;
 	private final Integer duration;
 
-	public RouteElement(String destination, Integer duration, Connectiontype travelType) {
+	RouteElement(String destination, Integer duration, Connectiontype travelType) {
 		super();
 		this.destination = destination;
 		this.duration = duration;
 		this.travelType = travelType;
 	}
 
-	public String getDestination() {
+	String getDestination() {
 		return destination;
 	}
 
-	public Connectiontype getTravelType() {
+	Connectiontype getTravelType() {
 		return travelType;
 	}
 
-	public Integer getDuration() {
+	Integer getDuration() {
 		return duration;
 	}
 

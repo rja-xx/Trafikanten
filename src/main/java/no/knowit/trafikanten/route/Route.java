@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import no.knowit.trafikanten.domain.Connectiontype;
+
 /**
  * Denne klassen representerer en rute. Denne er laget så immutable som mulig. 
  */
@@ -22,7 +24,8 @@ public class Route implements Iterable<RouteElement>
 			this.from = from;
 		}
 		
-		public Builder addRouteelement(RouteElement routeElement) {
+		public Builder addRouteelement(String destination, Integer duration, Connectiontype travelType) {
+			RouteElement routeElement = new RouteElement(destination, duration, travelType);
 			routeElements.add(routeElement);
 			return this;
 		}
