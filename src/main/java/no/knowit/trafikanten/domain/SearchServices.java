@@ -45,13 +45,14 @@ public class SearchServices {
 		throw new RuntimeException("Not implemented");
 	}
 
+	public boolean connectionExists(Station from, Station to) {
+		throw new RuntimeException("Not implemented");
+	}
+
 	public Route findRoute(Station from, Station to) {
 		throw new RuntimeException("Not implemented");
 	}
 
-	public boolean connectionExists(Station from, Station to) {
-		throw new RuntimeException("Not implemented");
-	}
 
 	private Node getReferencenode() {
 		return this.database.getNodeById(0);
